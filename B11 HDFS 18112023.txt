@@ -1,0 +1,167 @@
+Bigdata 
+
+V : Volume
+V : Velocity
+V : Variety 
+
+V : Value 
+V : Varacity 
+
+Hadoop : 
+Store : HDFS 
+Process : MR 
+
+-----------------------
+#HDFS : 
+cluster : multiple node 
+
+Master : NN
+Slave : DN 
+SNN 
+
+
+AWS cloud :
+ create EMR with hadoop sw 
+
+
+
+
+#HDFS Commands -
+#check hadoop version 
+hadoop version
+
+without hadoop fs / hdfs dfs  : LFS 
+with hadoop fs / hdfs dfs  : HDFS  
+
+
+#list files dir from HDFS 
+
+hadoop fs -ls <hdfs_path> 
+
+
+hadoop fs -ls /
+
+#create folder on HDFS 
+
+hadoop fs -mkdir <hdfs_path>
+
+hadoop fs -mkdir /d1
+
+#copy file from local to HDFS 
+
+hadoop fs -put <LFS_path> <HDFS_Path>
+
+hadoop fs -put f1 /d1
+hadoop fs -put /home/hadoop/f1 /d1
+
+
+*put file forcefully on HDFS (-f)
+hadoop fs -put -f /home/hadoop/f1 /d1
+
+
+hadoop fs -put d2 /
+
+
+#create empty file on HDFS 
+
+hadoop fs -touchz <HDFS_path/file_name>
+
+hadoop fs -touchz /sample.txt
+
+
+#copy file from HDFS to local 
+
+hadoop fs -get <HDFS_path> <LFSPath>
+
+hadoop fs -get /sample.txt /home/hadoop
+
+======================================
+#copy file from one HDFS path to other 
+
+hadoop fs -cp <src_hdfs_path> <tgt_hdfs_path>
+
+hadoop fs -cp /d1/f1 /d2
+
+=======================================
+#move file from one HDFS path to other 
+
+hadoop fs -mv <src_hdfs_path> <tgt_hdfs_path>
+
+hadoop fs -mv /d1/test /d2
+
+=============================================
+#Read file from HDFS 
+
+hadoop fs -cat <HDFS_path_of_file>
+
+hadoop fs -cat /data.txt
+
+===============================================
+#remove file from HDFS 
+
+hadoop fs -rm <HDFS_Path_file>
+hadoop fs -rmdir <HDFS_Path_file>
+hadoop fs -rm -r <HDFS_Path_dir>
+hadoop fs -rmr <HDFS_Path_dir>
+
+================================
+#to check free or usage space
+
+hadoop fs -df -h /
+hadoop fs -du -h /
+
+================================
+#To change permission of HDFS file 
+
+hadoop fs -chmod [permission ex.777] <HDFS_path>
+
+hadoop fs -chmod 777 /sample.txt
+
+==========================================
+-appendToFile : Append content from local to HDFS 
+
+
+Steps for practice-
+create a file on local with f1 
+put file on HDFS 
+create new file on local with diffrent content
+appendToFile to existing file 
+
+hadoop fs -appendToFile <new_file_from_local> <existingHDFSFile>
+
+exp. 
+hadoop fs -appendToFile f2 /f1
+
+===========================
+-getmerge
+
+to merge file from HDFS and download on LFS 
+
+hadoop fs -getmerge <HDFS_path> <Local_path/file_name>
+
+
+
+==============================
+#admin commans to 
+hdfs fsck .
+hadoop fsck /
+
+hdfs dfsadmin -report
+
+======================
+#
+hdfs dfsadmin -safemode get
+hdfs dfsadmin -safemode enter
+hdfs dfsadmin -safemode leave
+
+===============================
+
+
+-copyFromLocal : put 
+-copyToLocal : get 
+-moveFromLocal
+
+==============================
+hdfs_site.xml
+core_site.xml
+mr_site.xml

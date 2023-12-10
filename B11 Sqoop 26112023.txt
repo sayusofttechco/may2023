@@ -1,0 +1,44 @@
+database-2.cugrcv73l6xb.ap-south-1.rds.amazonaws.com
+
+myuser
+mypassword
+3306
+PROD 
+
+
+
+RDBMS -----------------------Sqoop-----------------------> HDFS
+
+
+import : RDBMS --> HDFS 
+
+sqoop cmd : 
+
+sqoop <sqoop_tool> --connect connection_details
+
+
+sqoop import --connect jdbc:mysql://database-2.cugrcv73l6xb.ap-south-1.rds.amazonaws.com:3306/PROD --username myuser --password 'mypassword' --table emp --target-dir /sq_op -m 1
+
+/home/hadoop
+
+sudo cp /home/hadoop/* /usr/lib/sqoop/lib/
+
+=====================================================
+Sqoop 
+
+1.created RDS (MYSQL)
+2.connected through workbench and created table inserted sample records and commited 
+
+3.created EMR with hadoop and sqoop 
+4.run cmd got failed due driver issue 
+sqoop import --connect jdbc:mysql://database-2.cugrcv73l6xb.ap-south-1.rds.amazonaws.com:3306/PROD --username myuser --password 'mypassword' --table emp --target-dir /sq_op -m 1
+
+5.copy driver file from windows to EMR throgh WinSCP  (/home/hadoop)
+6.sudo cp /home/hadoop/* /usr/lib/sqoop/lib/
+7.run 
+sqoop import --connect jdbc:mysql://database-2.cugrcv73l6xb.ap-south-1.rds.amazonaws.com:3306/PROD --username myuser --password 'mypassword' --table emp --target-dir /sq_op -m 1
+8.check file at this /sq_op
+9.hadoop fs -cat  
+
+============================
+sqoop import --connect jdbc:mysql://database-2.cugrcv73l6xb.ap-south-1.rds.amazonaws.com:3306/PROD --username myuser --password 'mypassword' --table std --target-dir /std_data -m 1

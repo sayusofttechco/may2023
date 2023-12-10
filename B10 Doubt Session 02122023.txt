@@ -1,0 +1,42 @@
+emp and dept 
+
+dept wise 2nd hihest sal in DF API approch ? 
+
+eid ,ename , dname , sal 
+
+===================================
+import winodws
+
+df_emp=
+
+df_dept=
+
+
+df_join=df_emp.join(df_dept....
+
+df_win=df_join.withColumn("drnk",......)
+
+
+df1=df.filter(drnk=1)
+
+df1=drop(drnk)
+
+df1.select(eid ,ename , dname , sal )
+
+write
+
+
+============
+df
+
+
+
+df.distinct()
+
+
+
+df.dropDuplicates()
+
+=====================
+11th Dec
+
